@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 5%;
+    --foreground: 210 20% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 263 84% 50%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 173 87% 32%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 215 20% 75%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 240 5% 18%;
+    --input: 240 5% 18%;
+    --ring: 240 5% 65%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cineverse-dark text-foreground;
+  }
+  
+  .movie-card:hover .movie-card-overlay {
+    opacity: 1;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .content-overlay {
+    background: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(10, 10, 10, 0.1) 100%);
+  }
+
+  .movie-gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+}

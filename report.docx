@@ -1,0 +1,132 @@
+CineVerse: Movie Recommendation System
+Project Report
+
+1. Overview
+CineVerse is a full-stack, AI-augmented movie recommendation platform that delivers personalized recommendations, advanced search, and a modern user experience. The system supports user authentication, favorites management, and leverages both collaborative filtering (KNN) and LLM-powered (OpenRouter) recommendations.
+
+2. Technology Stack
+Frontend:
+- React (TypeScript)
+- Tailwind CSS
+- React Router
+- React Query
+- Custom UI, Lucide React Icons
+
+Backend:
+- FastAPI (Python)
+- Pandas (data manipulation)
+- scikit-learn KNN (Nearest Neighbors)
+- RapidFuzz (fuzzy matching)
+- OpenRouter API (LLM-powered recommendations/search)
+- JWT-based authentication
+- python-dotenv
+
+Data:
+- Static JSON file for movie metadata
+- Schema: id, title, description, releaseYear, duration, rating, genres, moods, poster_path
+
+3. Data Model
+Movie Schema:
+- id: Unique identifier
+- title: Movie title
+- description: Short synopsis
+- releaseYear: Year of release
+- duration: Duration (e.g., "120m")
+- rating: Average rating (float)
+- genres: List of genres
+- moods: List of moods/themes
+- poster_path: Path to movie poster
+
+User Schema:
+- id: Unique user identifier
+- username: User’s login name
+- password_hash: Hashed password
+- favorites: List of favorite movie IDs
+
+4. Key Features & Implementation
+A. User Authentication
+- Signup/Login with JWT tokens
+- Protected routes for favorites
+- Favorites management per user
+
+B. Movie Recommendations (KNN)
+- Collaborative filtering using user-movie matrix
+- Fuzzy matching for movie titles (RapidFuzz)
+- KNN (scikit-learn) finds similar movies based on user ratings
+- Returns matched movie + K nearest neighbors
+
+C. AI-Powered Search & Recommendations
+- OpenRouter LLM integration for natural language search
+- Robust JSON extraction from LLM responses
+
+D. API Endpoints
+- RESTful design for movies, search, recommendations, authentication, favorites
+- Comprehensive error handling
+
+E. Frontend Functionality
+- Movie listing & details (full movie object passed via navigation state)
+- Favorites (add/remove, protected)
+- Search & filtering (genre, mood, AI-powered)
+- Responsive, modern UI
+
+F. Security & Environment
+- API keys managed via environment variables
+- .env files for configuration
+
+5. Notable Design Decisions
+- OpenRouter for LLM-powered recommendations
+- Stateful navigation for performance
+- Extensible data model
+
+6. KNN Recommendation System: Detailed Explanation
+What is KNN?
+- K-Nearest Neighbors (KNN) is a machine learning algorithm for finding the K most similar items to a given item.
+
+How KNN Works in CineVerse:
+- Data is represented as a user-movie matrix (pivot table)
+- Fuzzy matching (RapidFuzz) finds the closest movie title to user input
+- KNN (scikit-learn) finds the K movies with the most similar rating patterns
+- Recommendations = matched movie + its K nearest neighbors
+
+Why KNN?
+- No training required (lazy learner)
+- Easy to interpret: recommendations are based on real user behavior
+- Personalized, collaborative filtering
+
+Example Code:
+# Find the closest movie name using fuzzy matching
+match, score, _ = process.extractOne(
+    movie_name, movies_pivot.index, scorer=fuzz.token_sort_ratio
+)
+# Use KNN to find similar movies
+_, suggestions_id = model.kneighbors(
+    movies_pivot.loc[match].values.reshape(1, -1)
+)
+movie_list = list(movies_pivot.index[suggestions_id[0]])
+
+Limitations:
+- Scalability (slow for very large datasets)
+- Cold start (needs enough data)
+- Simplicity (doesn’t capture deep semantics)
+
+Summary Table:
+| Step             | Description                                 |
+|------------------|---------------------------------------------|
+| Data Preparation | User-movie matrix from ratings/interactions |
+| Fuzzy Matching   | Closest movie title (RapidFuzz)             |
+| KNN Search       | KNN finds similar movies                    |
+| Output           | Matched + K nearest neighbors               |
+
+7. Limitations & Future Work
+- Static JSON data; can migrate to a database for scalability
+- Add automated tests and analytics
+
+8. How Components Work Together
+- Frontend fetches movie data and recommendations from FastAPI backend
+- Authentication handled via JWT tokens
+- Recommendations via KNN or OpenRouter LLM
+- Full movie object passed for efficiency
+- Secure management of keys and config
+
+9. Conclusion
+CineVerse is a robust, modern movie recommendation system combining collaborative filtering (KNN), fuzzy matching, and AI-driven search, with secure authentication and a responsive UI. Its modular architecture and modern tech stack make it a strong foundation for future expansion and deployment.

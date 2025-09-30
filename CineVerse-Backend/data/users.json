@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "name": "Demo User",
+    "email": "demo@cineverse.com",
+    "password": "demo123",
+    "favorites": [
+      "3",
+      "4",
+      "1933"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Ayush Gupta",
+    "email": "ayush@cineverse.com",
+    "password": "ayush123",
+    "favorites": [
+      "2",
+      "5"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Kalpesh",
+    "email": "kalpesh@cineverse.com",
+    "password": "kalpesh123",
+    "favorites": [
+      "4",
+      "6"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Piyush",
+    "email": "piyush@cineverse.com",
+    "password": "piyush123",
+    "favorites": [
+      "1",
+      "4"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Tom Miller",
+    "email": "tommy@cineverse.com",
+    "password": "tommy123",
+    "favorites": [
+      "3",
+      "5"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Chris Evans",
+    "email": "chris@cineverse.com",
+    "password": "chris123",
+    "favorites": [
+      "2",
+      "6"
+    ]
+  },
+  {
+    "id": "aa22cf8f-a2df-4014-baea-62c3cab35cc9",
+    "name": "New Name",
+    "email": "newname@cineverse.com",
+    "password": "newname123",
+    "favorites": [
+      "1"
+    ]
+  }
+]
